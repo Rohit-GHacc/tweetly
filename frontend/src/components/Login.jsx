@@ -87,7 +87,16 @@ function Login() {
       [name]: value,
     }));
   }
-
+  function capitalizeWords(sentence) {
+    return sentence
+      .split(' ')
+      .map(word => capitalize(word)) // Reuse the `capitalize` function
+      .join(' ');
+  }
+  function capitalize(str) {
+    if (!str) return str; // Handle empty strings
+    return str.charAt(0).toUpperCase() + str.slice(1).toLowerCase();
+  }
 
   return (
     <div className='w-screen h-screen flex items-center justify-center'>
@@ -100,7 +109,7 @@ function Login() {
           <h2 className='font-bold text-4xl my-4'>Join today.</h2>
           <form onSubmit={handleSubmit} className='flex flex-col  w-[50%]'>
             {!hasAccount && (<>
-              <input type="text" name='name' value={user.name} onChange={handleInputChange} placeholder="Enter name" className='outline-blue-500 border border-gray-300 rounded-full px-3 py-1 my-1' />
+              <input type="text" name='name' value={capitalizeWords(user.name)} onChange={handleInputChange} placeholder="Enter name" className='outline-blue-500 border border-gray-300 rounded-full px-3 py-1 my-1' />
               <input type="text" name='username' value={user.username} onChange={handleInputChange} placeholder="Enter username" className='outline-blue-500 border border-gray-300 rounded-full px-3 py-1 my-1' /> </>)
             }
             <input type="email" name='email' value={user.email} onChange={handleInputChange} placeholder="Enter email" className='outline-blue-500 border border-gray-300 rounded-full px-3 py-1 my-1' />

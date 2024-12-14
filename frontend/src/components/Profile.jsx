@@ -1,7 +1,14 @@
 import React from 'react'
 import {IoMdArrowBack} from 'react-icons/io'
 import {Link} from 'react-router-dom'
+import { useSelector } from 'react-redux'
+import useGetProfile from '../hooks/useGetProfile'
+
 function Profile() {
+  
+    //custom hooks
+    const {user} = useSelector(store=>store.user)
+    useGetProfile(user._id)
   return (
     <div className='w-[47%] border-gray-200 border border-t-0  '>
       <div className='flex items-center border-b border-gray-200 cursor-pointer sticky top-0 background-white backdrop-blur'>
@@ -9,7 +16,7 @@ function Profile() {
             <IoMdArrowBack size='20px'/>
         </Link>
         <div className='ml-6 mb-1 pt-1'>
-            <h1 className='text-lg font-bold text-gray-800'>Rohit Chugh</h1>
+            <h1 className='text-lg font-bold text-gray-800'>{user?.name}</h1>
             <div className='text-sm text-gray-500'>2 posts</div>
         </div>
       </div>
@@ -25,14 +32,14 @@ function Profile() {
         </div>
       </div>
       <div className='mx-4 mt-6'>
-        <span className='text-xl font-bold'>Rohit Chugh</span>
+        <span className='text-xl font-bold'>{user.name}</span>
         <span className='py-1 px-2 text-sm border border-gray-300 rounded-full ml-2 hover:bg-gray-300'><button>Get verified</button></span>
-        <div className='text-sm text-gray-400 font-thin'>@_Rohit_14C</div>
+        <div className='text-sm text-gray-400 font-thin'>@{user.username}</div>
 
         <div className='text-gray-500 text-sm mt-4'>Joined December 2022</div>
         <div>
-            <span className=' font-bold text-xs'>30 <span className='text-xs text-gray-500 font-thin'>Following</span> </span>
-            <span className='font-bold ml-5 text-xs'>30B <span className='text-xs text-gray-500 font-thin'>Followers</span></span>
+            <span className=' font-bold text-xs'>{user.following.length} <span className='text-xs text-gray-500 font-thin'>Following</span> </span>
+            <span className='font-bold ml-5 text-xs'>{user.followers.length} <span className='text-xs text-gray-500 font-thin'>Followers</span></span>
         </div>
       </div>
 
