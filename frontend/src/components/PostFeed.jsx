@@ -5,7 +5,7 @@ import { useSelector } from 'react-redux'
 function PostFeed() {
   const {user} = useSelector(store => store.user)
   console.log(user?.name)
-  const tweets = useSelector(store=>store?.allTweets?.tweets) || []
+  const tweets = useSelector(store=>store?.allTweets?.mytweets) || []
   console.log("Saare tweets: ",tweets)
   
   return (
@@ -19,7 +19,7 @@ function PostFeed() {
           )
         })
       ):
-      <p>No Tweets to display</p>
+      <p className ='pt-4 flex justify-center '>No Tweets to display</p>
       }
       
     </div>
