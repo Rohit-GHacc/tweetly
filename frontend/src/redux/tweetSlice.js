@@ -1,9 +1,9 @@
 import {createSlice} from '@reduxjs/toolkit'
 
 const tweetSlice = createSlice({
-    name:'tweet',
+    name:'allTweets',
     initialState:{
-        tweets: null
+        tweets: []
     },
     reducers:{
         getAllTweets: (state,action)=>{
@@ -12,4 +12,4 @@ const tweetSlice = createSlice({
     }
 })
 export const {getAllTweets} = tweetSlice.actions
-export default tweetSlice;
+export default tweetSlice.reducer;

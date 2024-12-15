@@ -15,7 +15,7 @@ function Body() {
                 element: <PostFeed/>
             },
             {
-                path:'/profile',
+                path:'/profile/:id',
                 element: <Profile/>
             }
         ]

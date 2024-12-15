@@ -4,8 +4,8 @@ import tweetSlice from './tweetSlice'
 const store = configureStore({
     reducer:{
         //actions
+        allTweets: tweetSlice,
         user: userSlice,
-        tweet: tweetSlice
     }
 })
 

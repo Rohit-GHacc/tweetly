@@ -3,7 +3,7 @@ import { TWEET_API_END_POINT } from '../utils/constant'
 import { useEffect } from 'react'
 import { useDispatch } from 'react-redux'
 import {getAllTweets} from '../redux/tweetSlice'
-const useGetTweets = async (id)=>{
+const useGetTweets =  (id)=>{
     const dispatch = useDispatch()
     useEffect(() => {
         const fetchAllTweets = async ()=>{
