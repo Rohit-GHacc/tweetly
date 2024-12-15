@@ -31,7 +31,7 @@ function CreatePost() {
                 <div className='text-gray-600 font-bold w-[50%] p-3 mt-0 text-center hover:bg-gray-200 cursor-pointer'>For you</div>
                 <div className='text-gray-600 font-bold w-[50%] p-3 mt-0 text-center hover:bg-gray-200 cursor-pointer'>Following</div>
             </div>
-            <div className="px- 3 py-4 flex  relative ">
+            <div className="px-3 py-4 flex  relative ">
                 <Avatar className="cursor-pointer" src="https://pbs.twimg.com/profile_images/1604893971515604992/jvF7FyNu_400x400.jpg" size="40" round={true}/>
                 <input value = {description} onChange={(e)=>setDescription(e.target.value)} type="text" placeholder="What is happening?!" className="ml-2 w-full text-lg px-2 outline-none" />
             </div>
@@ -43,7 +43,7 @@ function CreatePost() {
                         <MdOutlineEmojiEmotions className="hover:bg-blue-100 cursor-pointer rounded-full p-1"/>
                         <RiCalendarScheduleLine className="hover:bg-blue-100 cursor-pointer rounded-full p-1"/>
                     </div>
-                    <button onClick={postTweet} className="rounded-full bg-blue-300 py-2 px-4 text-white text-center">Post</button>
+                    <button onClick={postTweet} className="rounded-full bg-blue-500 hover:bg-blue-600 disabled:bg-blue-300 py-2 px-4 text-white text-center " disabled={description.length>0? false:true}>Post</button>
                 </div>
         </>
     )

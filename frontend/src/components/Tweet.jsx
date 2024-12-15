@@ -18,7 +18,7 @@ function Tweet({tweet}) {
                     <div className='flex justify-between pt-3 text-sm text-gray-500 '>
                         <div className='flex align-center justify-between hover:text-[#1d9bf0]'> <div className='p-1 hover:bg-blue-100  rounded-full'><VscComment size='24px' className='font-thin '/> </div><span className=' p-1 '> 90.1K</span> </div>
                         <div className='flex align-center hover:text-[#00ba7c]'> <div className='p-1 hover:bg-green-100 rounded-full'><BiRepost size='22px'/></div> <span className='p-1'>500 </span></div>
-                        <div className='flex align-center hover:text-[#f91880]'> <div className='p-1 hover:bg-red-100 rounded-full'><CiHeart size='22px'/></div> <span className='p-1'> 500K</span></div>
+                        <div className='flex align-center hover:text-[#f91880]'> <div className='p-1 hover:bg-red-100 rounded-full'><CiHeart size='22px'/></div> <span className='p-1'> {tweet?.like.length}</span></div>
                         <div className='flex align-center hover:text-[#1d9bf0]'> <div className='p-1 hover:bg-blue-100 rounded-full'><IoIosStats size='22px'/></div> <span className='p-1'> 1M</span></div>
                         <div className='flex align-center gap-1'> <div className='p-1 hover:text-[#1d9bf0] hover:bg-blue-100 rounded-full cursor-pointer'><CiBookmark size='22px'/></div> <div className='p-1 hover:text-[#1d9bf0] hover:bg-blue-100 rounded-full cursor-pointer'><BsUpload size='22px'/></div></div>
                     </div>
