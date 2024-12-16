@@ -4,7 +4,8 @@ const tweetSlice = createSlice({
     name:'allTweets',
     initialState:{
         mytweets: [],
-        refresh: false
+        refresh: false,
+        filter: 'forYou'
     },
     reducers:{
         getAllTweets: (state,action)=>{
@@ -12,8 +13,11 @@ const tweetSlice = createSlice({
         },
         toggleRefresh: (state)=>{
             state.refresh = !state.refresh
+        },
+        setFilter: (state,action)=>{
+            state.filter = action.payload
         }
     }
 })
-export const {getAllTweets,toggleRefresh} = tweetSlice.actions
+export const {getAllTweets,toggleRefresh, setFilter} = tweetSlice.actions
 export default tweetSlice.reducer;

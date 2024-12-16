@@ -6,11 +6,11 @@ import {getAllTweets} from '../redux/tweetSlice'
 import { useSelector } from 'react-redux'
 const useGetTweets =  (id)=>{
     const dispatch = useDispatch()
-    const {refresh} = useSelector(store=>store.allTweets)
+    const {refresh, filter} = useSelector(store=>store.allTweets)
     useEffect(() => {
         const fetchAllTweets = async ()=>{
             try {
-                const res = await axios.get(`${ TWEET_API_END_POINT}/alltweets/${id}`,{
+                const res = await axios.get(`${ TWEET_API_END_POINT}/tweets/${id}?filter=${filter}`,{
                     withCredentials: true
                 })
                 dispatch(getAllTweets(res?.data?.tweets))
@@ -21,7 +21,7 @@ const useGetTweets =  (id)=>{
         }
         fetchAllTweets()
         // eslint-disable-next-line
-    }, [id,refresh])
+    }, [id,refresh,filter])
     
 }
 export default useGetTweets

@@ -9,7 +9,7 @@ import { useState } from 'react';
 import { useSelector,useDispatch } from 'react-redux';
 import {TWEET_API_END_POINT} from '../utils/constant'
 import axios from 'axios'
-import { toggleRefresh } from '../redux/tweetSlice';
+import { toggleRefresh, setFilter } from '../redux/tweetSlice';
 function CreatePost() {
     const [description,setDescription] = useState('');
     const {user} = useSelector(store => store.user)
@@ -25,11 +25,14 @@ function CreatePost() {
         }
 
     }
+    // HANDLING FOR YOU AND FOLLOWING
+    const {filter} = useSelector(store=>store.allTweets)
+    
     return (
         <>
             <div className='  top-0 flex z-50 justify-around sticky border-b border-b-gray-200 bg-white bg-opacity-75 backdrop-blur-md'>
-                <div className='text-gray-600 font-bold w-[50%] p-3 mt-0 text-center hover:bg-gray-200 cursor-pointer'>For you</div>
-                <div className='text-gray-600 font-bold w-[50%] p-3 mt-0 text-center hover:bg-gray-200 cursor-pointer'>Following</div>
+                <div onClick={()=>(dispatch(setFilter('forYou')))} className={`${filter==='forYou'? 'border-b-2 text-black border-blue-600': 'border-b-4 border-transparent'} text-gray-600 font-bold w-[50%] p-3 mt-0 text-center hover:bg-gray-200 cursor-pointer`}>For you</div>
+                <div onClick={()=>(dispatch(setFilter('following')))} className={`${filter==='following'? 'border-b-2 border-blue-600': 'border-b-4 border-transparent text-black'} text-gray-600 font-bold w-[50%] p-3 mt-0 text-center hover:bg-gray-200 cursor-pointer`}>Following</div>
             </div>
             <div className="px-3 py-4 flex  relative ">
                 <Avatar className="cursor-pointer" src="https://pbs.twimg.com/profile_images/1604893971515604992/jvF7FyNu_400x400.jpg" size="40" round={true}/>
