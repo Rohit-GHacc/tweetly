@@ -6,7 +6,29 @@ import { CiHeart } from "react-icons/ci";
 import { CiBookmark } from "react-icons/ci";
 import { IoIosStats } from "react-icons/io";
 import { BsUpload } from "react-icons/bs";
+import axios from 'axios'
+import {TWEET_API_END_POINT} from '../utils/constant'
+import {useSelector} from 'react-redux'
+import toast from 'react-hot-toast'
+import {toggleRefresh} from '../redux/tweetSlice'
+import { useDispatch } from 'react-redux';
 function Tweet({tweet}) {
+    const {user} = useSelector(store => store.user)
+    const dispatch= useDispatch()
+    const likeDislikeHandler = async (id)=>{
+        try {
+            const res = await axios.put(`${TWEET_API_END_POINT}/like/${id}`,{id: user?._id},{
+                withCredentials: true
+            })
+            dispatch(toggleRefresh())
+            console.log(res)
+            toast.success(res.data.message)
+        } catch (error) {
+            // toast.response.error.message(error)
+            toast.success(error.response.data.message)
+            console.log(error)
+        }
+    }
     return (
         <div className='border-b border-b-gray-200 hover:bg-gray-100 cursor-pointer '>
             <div className='flex px-2 py-4 gap-2  '>
@@ -18,7 +40,7 @@ function Tweet({tweet}) {
                     <div className='flex justify-between pt-3 text-sm text-gray-500 '>
                         <div className='flex align-center justify-between hover:text-[#1d9bf0]'> <div className='p-1 hover:bg-blue-100  rounded-full'><VscComment size='24px' className='font-thin '/> </div><span className=' p-1 '> 90.1K</span> </div>
                         <div className='flex align-center hover:text-[#00ba7c]'> <div className='p-1 hover:bg-green-100 rounded-full'><BiRepost size='22px'/></div> <span className='p-1'>500 </span></div>
-                        <div className='flex align-center hover:text-[#f91880]'> <div className='p-1 hover:bg-red-100 rounded-full'><CiHeart size='22px'/></div> <span className='p-1'> {tweet?.like.length}</span></div>
+                        <div onClick={()=>(likeDislikeHandler(tweet?._id))} className='flex align-center hover:text-[#f91880]'> <div className='p-1 hover:bg-red-100 rounded-full'><CiHeart size='22px'/></div> <span className='p-1'> {tweet?.like.length}</span></div>
                         <div className='flex align-center hover:text-[#1d9bf0]'> <div className='p-1 hover:bg-blue-100 rounded-full'><IoIosStats size='22px'/></div> <span className='p-1'> 1M</span></div>
                         <div className='flex align-center gap-1'> <div className='p-1 hover:text-[#1d9bf0] hover:bg-blue-100 rounded-full cursor-pointer'><CiBookmark size='22px'/></div> <div className='p-1 hover:text-[#1d9bf0] hover:bg-blue-100 rounded-full cursor-pointer'><BsUpload size='22px'/></div></div>
                     </div>
