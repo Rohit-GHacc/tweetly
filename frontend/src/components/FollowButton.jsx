@@ -4,7 +4,7 @@ import toast from 'react-hot-toast'
 import { USER_API_END_POINT } from '../utils/constant'
 import axios from 'axios'
 import { toggleRefresh } from '../redux/tweetSlice'
-import { toggleUserRefresh } from '../redux/userSlice'
+import { followingUpdate } from '../redux/userSlice'
 function FollowButton({followId}) {
     const dispatch = useDispatch()
     const {profile,user} = useSelector(store=>store.user)
@@ -22,7 +22,7 @@ function FollowButton({followId}) {
             withCredentials: true
           })
           dispatch(toggleRefresh())
-          dispatch(toggleUserRefresh())
+          dispatch(followingUpdate(id))
           toast.success(res.data.message)
         } catch (error) {
           toast.error(error.response.data.message)
@@ -36,7 +36,7 @@ function FollowButton({followId}) {
             withCredentials: true
           })
           dispatch(toggleRefresh())
-          dispatch(toggleUserRefresh())
+          dispatch(followingUpdate(id))
           toast.success(res.data.message)
         } catch (error) {
           toast.error(error.response.data.message)
