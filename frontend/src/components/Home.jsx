@@ -17,7 +17,7 @@ function Home() {
                 navigate('/login')
             }
             //eslint-disable-next-line
-    },[user])
+    },[])
     return (
         <div>
             <div className='flex mx-auto w-[80%] justify-center gap-[2%]'>

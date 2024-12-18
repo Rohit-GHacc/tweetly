@@ -7,12 +7,26 @@ import { CiMail } from "react-icons/ci";
 import { BsPeople } from "react-icons/bs";
 import { FaBolt } from "react-icons/fa";
 import { IoPersonOutline } from "react-icons/io5";
-import { CiCircleMore } from "react-icons/ci";
-import { useSelector } from 'react-redux';
-import {Link} from 'react-router-dom'
+// import { CiCircleMore } from "react-icons/ci";
+import { IoIosLogOut } from "react-icons/io";
+import { useDispatch, useSelector } from 'react-redux';
+import {Link, useNavigate} from 'react-router-dom'
+import { getMyProfile, getOtherUsers, getUser } from '../redux/userSlice';
+import { getAllTweets, setFilter } from '../redux/tweetSlice';
 function LeftSideBar() {
   const {user} = useSelector(store => store.user)
   console.log("Mai leftsidebar mein hu: ", user)
+  const navigate = useNavigate()
+  const dispatch = useDispatch()
+  const logoutHandler = ()=>{
+    dispatch(getUser(null))
+    dispatch(setFilter('following'))
+
+    dispatch(getOtherUsers(null))
+    dispatch(getMyProfile(null))
+    dispatch(getAllTweets(null))
+    navigate('/login')
+  }
   return (
     <div className='sticky top-0 h-[100vh] w-[18%]'>
         <div className='hover:bg-gray-200 p-2  rounded-full inline-block '>
@@ -28,7 +42,7 @@ function LeftSideBar() {
             <div className='inline-flex  py-2 px-2 mx-0 my-0 hover:bg-gray-200 rounded-full cursor-pointer'> <FaXTwitter size='28px'/> <div className='px-4 text-lg'>Premium</div> </div>
             <div className='inline-flex  py-2 px-2 mx-0 my-0 hover:bg-gray-200 rounded-full cursor-pointer'> <FaBolt size='28px'/> <div className='px-4 text-lg'>Verified Orgs</div> </div>
             <Link to={`/profile/${user?._id}`} className='inline-flex  py-2 px-2 mx-0 my-0 hover:bg-gray-200 rounded-full cursor-pointer'> <IoPersonOutline size='28px'/> <div className='px-4 text-lg'>Profile</div> </Link>
-            <div className='inline-flex  py-2 px-2 mx-0 my-0 hover:bg-gray-200 rounded-full cursor-pointer'> <CiCircleMore size='28px'/> <div className='px-4 text-lg'>More</div> </div>
+            <div className='inline-flex  py-2 px-2 mx-0 my-0 hover:bg-gray-200 rounded-full cursor-pointer' onClick={logoutHandler}> <IoIosLogOut size='28px'/> <div className='px-4 text-lg'>Logout</div> </div>
             <div className='text-white py-3 px-2 mx-0 my-2 bg-blue-500 text-center  hover:bg-blue-600 rounded-full text-sm cursor-pointer'> Post </div>
         </div>
     </div>
