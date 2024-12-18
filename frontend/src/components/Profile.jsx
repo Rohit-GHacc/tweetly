@@ -9,7 +9,7 @@ import FollowButton  from './FollowButton'
 function Profile() {
   
     //custom hooks
-    const {profile,user} = useSelector(store=>store.user)
+    const {profile} = useSelector(store=>store.user)
     const {id} = useParams()
     useGetProfile(id)
     console.log("Profile variable: ",profile)

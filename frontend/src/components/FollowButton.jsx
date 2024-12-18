@@ -7,7 +7,7 @@ import { toggleRefresh } from '../redux/tweetSlice'
 import { followingUpdate } from '../redux/userSlice'
 function FollowButton({followId}) {
     const dispatch = useDispatch()
-    const {profile,user} = useSelector(store=>store.user)
+    const {user} = useSelector(store=>store.user)
     const [text,setText] = useState('Following')
     const handleMouseOver = ()=>{
       setText('Unfollow')
