@@ -4,13 +4,17 @@ import {Link, useParams} from 'react-router-dom'
 import { useSelector } from 'react-redux'
 import useGetProfile from '../hooks/useGetProfile'
 
+
+import FollowButton  from './FollowButton'
 function Profile() {
   
     //custom hooks
-    const {user,profile} = useSelector(store=>store.user)
+    const {profile,user} = useSelector(store=>store.user)
     const {id} = useParams()
     useGetProfile(id)
     console.log("Profile variable: ",profile)
+    
+    
   return (
     <div className='w-[47%] border-gray-200 border border-t-0  '>
       <div className='flex items-center border-b border-gray-200 cursor-pointer sticky top-0 background-white backdrop-blur'>
@@ -29,9 +33,7 @@ function Profile() {
         <div className='rounded-full cursor-pointer absolute  ml-4 -mt-16 '>
             <img className='rounded-full border-4 border-white' src="https://pbs.twimg.com/profile_images/1604893971515604992/jvF7FyNu_400x400.jpg" alt="" style={{width:'33%'}} />
         </div>
-        <div className='m-4 text-right '>
-            <button className ={`px-4 py-1 hover:bg-gray-200 rounded-full cursor-pointer border border-gray-200 font-bold ${!profile || profile._id !== user?._id ? 'invisible' : ''}`}>Edit Profile </button>
-        </div>
+        <FollowButton followId={id}/>
       </div>
       <div className='mx-4 mt-6'>
         <span className='text-xl font-bold'>{profile?.name}</span>
