@@ -5,12 +5,17 @@ import Body from './components/Body';
 import { Toaster } from 'react-hot-toast'
 import { Provider } from 'react-redux'
 import store from './redux/store';
+import { PersistGate } from 'redux-persist/integration/react'
+import { persistStore } from 'redux-persist';
+let persistor = persistStore(store)
 const root = ReactDOM.createRoot(document.getElementById('root'));
 root.render(
   <React.StrictMode>
     <Provider store={store}>
-      <Body />
-      <Toaster />
+      <PersistGate loading = {null} persistor ={persistor}>
+        <Body />
+        <Toaster />
+      </PersistGate>
     </Provider>
   </React.StrictMode>
 );

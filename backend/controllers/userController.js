@@ -1,6 +1,7 @@
 import jwt from "jsonwebtoken";
 import { User } from "../models/userSchema.js";
 import bcryptjs from 'bcryptjs';
+import { Tweet } from "../models/tweetSchema.js";
 export const Register = async (req, res) => {
     try {
         const { name, username, email, password } = req.body;
@@ -96,9 +97,11 @@ export const bookmarks = async (req, res) => {
         const loggedInUserId = req.body.id;
         const tweetId = req.params.id;
         const user = await User.findById(loggedInUserId)
+        const tweet = await Tweet.findById(tweetId)
         if (user.bookmarks.includes(tweetId)) {
             // remove bookmark
             await User.findByIdAndUpdate(loggedInUserId, { $pull: { bookmarks: tweetId } })
+            await tweet.updateOne({$pull: {bookmarks: loggedInUserId}})
             return res.status(200).json({
                 message: "Removed from bookmarks",
                 success: true
@@ -107,6 +110,7 @@ export const bookmarks = async (req, res) => {
         else {
             // add bookmark
             await User.findByIdAndUpdate(loggedInUserId, { $push: { bookmarks: tweetId } })
+            await tweet.updateOne({$push: {bookmarks: loggedInUserId}})
             return res.status(200).json({
                 message: "saved to bookmarks",
                 success: true
