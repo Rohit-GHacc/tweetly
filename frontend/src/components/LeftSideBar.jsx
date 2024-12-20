@@ -20,7 +20,7 @@ function LeftSideBar() {
   const dispatch = useDispatch()
   const logoutHandler = ()=>{
     dispatch(getUser(null))
-    dispatch(setFilter('following'))
+    dispatch(setFilter('forYou'))
 
     dispatch(getOtherUsers(null))
     dispatch(getMyProfile(null))

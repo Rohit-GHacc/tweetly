@@ -22,7 +22,7 @@ function Home() {
         <div>
             <div className='flex mx-auto w-[80%] justify-center gap-[2%]'>
                 <LeftSideBar />
-                < Outlet/>
+                <Outlet/>
                 <RightSideBar />
             </div>
         </div>

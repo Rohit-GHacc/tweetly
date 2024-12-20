@@ -21,7 +21,7 @@ export const timeSince = (timestamp)=> {
           let interval = intervals[i];
           if (secondsPast >= interval) {
               let count = Math.floor(secondsPast / interval);
-              return `${count} ${i} ${count > 1 ? 's' : ''} ${suffix}`;
+              return `${count} ${i}${count > 1 ? 's' : ''} ${suffix}`;
           }
       }
   }

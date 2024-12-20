@@ -21,7 +21,7 @@ function RightSideBar() {
   };
 
   return (
-    <div className='sticky top-0 py-1 h-[100vh] w-[31%]'>
+    <div className='sticky top-0 py-1 h-[100vh] w-[31%] hidden lg:block'>
       <div className='rounded-full flex px-4 items-center bg-gray-100 '>
         <CiSearch size='24px' />
         <input
@@ -31,7 +31,7 @@ function RightSideBar() {
         />
       </div>
       <div className='rounded-xl border border-gray-200 p-2 my-3 w-full'>
-        <h1 className='m-2 text-lg font-bold'>Who to follow</h1>
+        <h1 className='m-2 text-lg font-bold inline-block'>Who to follow</h1>
         {otherUsers?.map((user) => (
           <div
             onClick={() => handleNavigate(user?._id)}
