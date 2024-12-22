@@ -18,6 +18,7 @@ app.use(urlencoded({
 }))
 app.use(cors({
     origin:'https://tweetlys.vercel.app/',
+    methods: ['POST','GET','PUT','DELETE'],
     credentials: true
 }))
 app.use(cookieParser());
