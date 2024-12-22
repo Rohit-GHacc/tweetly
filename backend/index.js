@@ -17,7 +17,7 @@ app.use(urlencoded({
     extended: true
 }))
 app.use(cors({
-    origin:'https://tweetly-sand.vercel.app/',
+    origin:'https://tweetlys.vercel.app/',
     credentials: true
 }))
 app.use(cookieParser());
