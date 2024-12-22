@@ -17,7 +17,7 @@ app.use(urlencoded({
     extended: true
 }))
 app.use(cors({
-    origin:'https://tweetlys.vercel.app/',
+    origin:'https://tweetlys.vercel.app',
     methods: ['POST','GET','PUT','DELETE'],
     credentials: true
 }))
