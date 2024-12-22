@@ -30,7 +30,10 @@ const userSchema = new Schema({
     bookmarks:{
         type : Array,
         default: []
-    }
+    },
+    profileImage: { 
+        type: String, 
+        default: process.env.DEFAULT_PROFILE_IMAGE },
 },{timestamps:true});
 
 export const User = model('User',userSchema)

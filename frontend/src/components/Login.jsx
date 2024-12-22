@@ -9,7 +9,7 @@ import { getUser } from '../redux/userSlice'
 function Login() {
   const [hasAccount, setHasAccount] = useState(true);
   const [user, setUser] = useState({
-    name: '', username: '', email: '', password: ''
+    name: '', username: '', email: '', password: '', profileImage: null
   })
   const navigate = useNavigate()
   const dispatch = useDispatch()
@@ -17,6 +17,12 @@ function Login() {
   useEffect(() => {
     console.log("updated hasAccount value: ", hasAccount)
   }, [hasAccount])
+  const handleFileChange = (e) => {
+    const file = e.target.files[0]; // Get the first selected file
+    if (file) {
+      setUser((prev) => ({ ...prev, profileImage: file }));
+    }
+  };
 
 
   const loginSignupHandler = async function (e) {
@@ -109,11 +115,21 @@ function Login() {
           <h2 className='font-bold text-4xl my-4'>Join today.</h2>
           <form onSubmit={handleSubmit} className='flex flex-col  w-[50%]'>
             {!hasAccount && (<>
+
               <input type="text" name='name' value={capitalizeWords(user.name)} onChange={handleInputChange} placeholder="Enter name" className='outline-blue-500 border border-gray-300 rounded-full px-3 py-1 my-1' />
               <input type="text" name='username' value={user.username} onChange={handleInputChange} placeholder="Enter username" className='outline-blue-500 border border-gray-300 rounded-full px-3 py-1 my-1' /> </>)
             }
             <input type="email" name='email' value={user.email} onChange={handleInputChange} placeholder="Enter email" className='outline-blue-500 border border-gray-300 rounded-full px-3 py-1 my-1' />
             <input type="password" name='password' value={user.password} onChange={handleInputChange} placeholder="Enter password" className='outline-blue-500 border border-gray-300 rounded-full px-3 py-1 my-1' />
+            {!hasAccount && (
+              <input
+                type="file"
+                name="profileImage"
+                accept="image/*"
+                onChange={handleFileChange}
+                className='outline-blue-500 border border-gray-300 rounded-full px-3 py-1 my-1'
+              />
+            )}
             <button type='submit' className='bg-blue-500 text-white font-bold px-4 py-1 my-2 rounded-full text-center '>{hasAccount ? "Login" : "Create account"}</button>
             <div className='p-1'>{hasAccount ? "Do not have an account?" : "Already have an account? "}</div>
             <button onClick={loginSignupHandler} className='text-blue-500 border border-gray-300 font-bold px-4 py-1 my-2 rounded-full text-center '>{hasAccount ? "Sign Up" : "Login"}</button>
