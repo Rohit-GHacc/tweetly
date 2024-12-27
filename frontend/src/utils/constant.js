@@ -1,5 +1,5 @@
-export const USER_API_END_POINT ='https://tweetly-pearl.vercel.app/api/v1/user';
-export const TWEET_API_END_POINT='https://tweetly-pearl.vercel.app/api/v1/tweet';
+export const USER_API_END_POINT ='https://tweetly-backend.onrender.com/api/v1/user';
+export const TWEET_API_END_POINT='https://tweetly-backend.onrender.com/api/v1/tweet';
 
 export const timeSince = (timestamp)=> {
     let time = Date.parse(timestamp);
