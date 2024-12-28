@@ -16,7 +16,7 @@ function Home() {
             navigate('/login')
         }
         //eslint-disable-next-line
-    },[])
+    },[user,navigate])
     useGetTweets(user?._id)
     useOtherUsers(user?._id)
     return (
