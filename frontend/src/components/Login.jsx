@@ -9,7 +9,7 @@ import { getUser } from '../redux/userSlice'
 function Login() {
   const [hasAccount, setHasAccount] = useState(true);
   const [user, setUser] = useState({
-    name: '', username: '', email: '', password: '', profileImage: null
+    name: '', username: '', email: '', password: ''
   })
   const navigate = useNavigate()
   const dispatch = useDispatch()
@@ -17,12 +17,12 @@ function Login() {
   useEffect(() => {
     console.log("updated hasAccount value: ", hasAccount)
   }, [hasAccount])
-  const handleFileChange = (e) => {
-    const file = e.target.files[0]; // Get the first selected file
-    if (file) {
-      setUser((prev) => ({ ...prev, profileImage: file }));
-    }
-  };
+  // const handleFileChange = (e) => {
+  //   const file = e.target.files[0]; // Get the first selected file
+  //   if (file) {
+  //     setUser((prev) => ({ ...prev, profileImage: file }));
+  //   }
+  // };
 
 
   const loginSignupHandler = async function (e) {
@@ -121,7 +121,7 @@ function Login() {
             }
             <input type="email" name='email' value={user.email} onChange={handleInputChange} placeholder="Enter email" className='outline-blue-500 border border-gray-300 rounded-full px-3 py-1 my-1' />
             <input type="password" name='password' value={user.password} onChange={handleInputChange} placeholder="Enter password" className='outline-blue-500 border border-gray-300 rounded-full px-3 py-1 my-1' />
-            {!hasAccount && (
+            {/* {!hasAccount && (
               <input
                 type="file"
                 name="profileImage"
@@ -129,7 +129,7 @@ function Login() {
                 onChange={handleFileChange}
                 className='outline-blue-500 border border-gray-300 rounded-full px-3 py-1 my-1'
               />
-            )}
+            )} */}
             <button type='submit' className='bg-blue-500 text-white font-bold px-4 py-1 my-2 rounded-full text-center '>{hasAccount ? "Login" : "Create account"}</button>
             <div className='p-1'>{hasAccount ? "Do not have an account?" : "Already have an account? "}</div>
             <button onClick={loginSignupHandler} className='text-blue-500 border border-gray-300 font-bold px-4 py-1 my-2 rounded-full text-center '>{hasAccount ? "Sign Up" : "Login"}</button>
