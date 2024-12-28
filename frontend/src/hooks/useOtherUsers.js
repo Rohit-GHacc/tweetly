@@ -12,7 +12,7 @@ const useOtherUsers =  (id)=>{
                     withCredentials: true
                 })
                 dispatch(getOtherUsers(res.data.otherUsers))
-                console.log(res)
+                console.log("other users response: ",res)
             } catch (error) {
                 console.log(error)
             }
