@@ -10,12 +10,12 @@ import useGetTweets from '../hooks/useGetTweets'
 function Home() {
     const navigate = useNavigate()
     const {user} = useSelector(store=>store.user)
-    useGetTweets(user?._id)
-    useOtherUsers(user?._id)
     React.useEffect(()=>{
-    if(!user){
-                navigate('/login')
-            }
+        if(!user){
+            navigate('/login')
+        }
+        useGetTweets(user?._id)
+        useOtherUsers(user?._id)
             //eslint-disable-next-line
     },[])
     return (

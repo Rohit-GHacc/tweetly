@@ -14,7 +14,7 @@ const useGetTweets =  (id)=>{
                     withCredentials: true
                 })
                 dispatch(getAllTweets(res?.data?.tweets))
-                console.log(res)
+                console.log("tweets: ",res)
             } catch (error) {
                 console.log(error)
             }
