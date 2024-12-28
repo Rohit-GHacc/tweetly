@@ -7,7 +7,7 @@ import { MdOutlineEmojiEmotions } from "react-icons/md"
 import { RiCalendarScheduleLine } from "react-icons/ri";
 import { useState } from 'react';
 import { useSelector,useDispatch } from 'react-redux';
-import {TWEET_API_END_POINT} from '../utils/constant'
+// import {TWEET_API_END_POINT} from '../utils/constant'
 import axios from 'axios'
 import { toggleRefresh, setFilter } from '../redux/tweetSlice';
 function CreatePost() {
@@ -17,7 +17,7 @@ function CreatePost() {
 
     const postTweet = async()=>{
         try {
-            await axios.post(`${TWEET_API_END_POINT}/create`,{description,id:user?._id},{withCredentials: true})
+            await axios.post(`${import.meta.env.VITE_TWEET_API_END_POINT}/create`,{description,id:user?._id},{withCredentials: true})
             dispatch(toggleRefresh())
             setDescription('')
         } catch (error) {

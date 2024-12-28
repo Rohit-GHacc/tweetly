@@ -1,6 +1,6 @@
 import React, { useEffect, useState } from 'react'
 import { FaXTwitter } from 'react-icons/fa6'
-import { USER_API_END_POINT } from '../utils/constant';
+// import { USER_API_END_POINT } from '../utils/constant';
 import axios from 'axios'
 import toast from 'react-hot-toast'
 import { useNavigate } from 'react-router-dom'
@@ -43,7 +43,7 @@ function Login() {
 
       try {
         console.log("Login submitted")
-        const res = await axios.post(`${USER_API_END_POINT}/login`, { email: user.email, password: user.password }, {
+        const res = await axios.post(`${import.meta.env.VITE_USER_API_END_POINT}/login`, { email: user.email, password: user.password }, {
           headers: {
             'Content-Type': "application/json"
           },
@@ -66,7 +66,7 @@ function Login() {
       //SIGN UP
       try {
         console.log("Sign up submitted")
-        const res = await axios.post(`${USER_API_END_POINT}/register`, user, {
+        const res = await axios.post(`${import.meta.env.VITE_USER_API_END_POINT}/register`, user, {
           headers: {
             'Content-Type': "application/json"
           },

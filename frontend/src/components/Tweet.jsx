@@ -8,7 +8,8 @@ import { CiBookmark } from "react-icons/ci";
 // import { BsUpload } from "react-icons/bs";
 import { MdOutlineDeleteOutline } from 'react-icons/md'
 import axios from 'axios'
-import {TWEET_API_END_POINT, USER_API_END_POINT} from '../utils/constant'
+
+// import {TWEET_API_END_POINT, USER_API_END_POINT} from '../utils/constant'
 import {useSelector} from 'react-redux'
 import toast from 'react-hot-toast'
 import {toggleRefresh} from '../redux/tweetSlice'
@@ -19,7 +20,7 @@ function Tweet({tweet}) {
     const dispatch= useDispatch()
     const likeDislikeHandler = async (id)=>{
         try {
-            const res = await axios.put(`${TWEET_API_END_POINT}/like/${id}`,{id: user?._id},{
+            const res = await axios.put(`${import.meta.env.VITE_TWEET_API_END_POINT}/like/${id}`,{id: user?._id},{
                 withCredentials: true
             })
             dispatch(toggleRefresh())
@@ -34,7 +35,7 @@ function Tweet({tweet}) {
 
     const deleteTweet = async (id)=>{
         try {
-            const res = await axios.delete(`${TWEET_API_END_POINT}/delete/${id}`,{withCredentials:true})
+            const res = await axios.delete(`${import.meta.env.VITE_TWEET_API_END_POINT}/delete/${id}`,{withCredentials:true})
             dispatch(toggleRefresh())
             toast.success(res.data.message)
         } catch (error) {

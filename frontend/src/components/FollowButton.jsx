@@ -1,7 +1,7 @@
 import React, { useState } from 'react'
 import { useDispatch, useSelector } from 'react-redux'
 import toast from 'react-hot-toast'
-import { USER_API_END_POINT } from '../utils/constant'
+// import { USER_API_END_POINT } from '../utils/constant'
 import axios from 'axios'
 import { toggleRefresh } from '../redux/tweetSlice'
 import { followingUpdate } from '../redux/userSlice'
@@ -18,7 +18,7 @@ function FollowButton({followId}) {
     const followHandler = async(e,id)=>{
         try {
             e.stopPropagation()
-          const res = await axios.put(`${USER_API_END_POINT}/follow/${id}`,{id:user?._id},{
+          const res = await axios.put(`${import.meta.env.VITE_USER_API_END_POINT}/follow/${id}`,{id:user?._id},{
             withCredentials: true
           })
           dispatch(toggleRefresh())
@@ -32,7 +32,7 @@ function FollowButton({followId}) {
     const unfollowHandler = async(e,id)=>{
         try {
             e.stopPropagation()
-          const res = await axios.put(`${USER_API_END_POINT}/unfollow/${id}`,{id:user?._id},{
+          const res = await axios.put(`${import.meta.env.VITE_USER_API_END_POINT}/unfollow/${id}`,{id:user?._id},{
             withCredentials: true
           })
           dispatch(toggleRefresh())

@@ -10,7 +10,7 @@ const useGetTweets =  (id)=>{
     useEffect(() => {
         const fetchAllTweets = async ()=>{
             try {
-                const res = await axios.get(`${ TWEET_API_END_POINT}/tweets/${id}?filter=${filter}`,{
+                const res = await axios.get(`${import.meta.env.VITE_TWEET_API_END_POINT}/tweets/${id}?filter=${filter}`,{
                     withCredentials: true
                 })
                 dispatch(getAllTweets(res?.data?.tweets))
