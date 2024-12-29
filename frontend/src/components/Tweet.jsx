@@ -47,7 +47,7 @@ function Tweet({tweet}) {
     const bookmarkHandler = async (tweetId)=>{
         try {
             //unbookmark the tweet
-                const res = await axios.put(`${USER_API_END_POINT}/bookmark/${tweetId}`,{id: user?._id},{
+                const res = await axios.put(`${import.meta.env.VITE_USER_API_END_POINT}/bookmark/${tweetId}`,{id: user?._id},{
                     withCredentials: true
                 })
                 dispatch(toggleRefresh())
