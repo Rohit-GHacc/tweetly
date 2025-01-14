@@ -117,8 +117,8 @@ function Login() {
           <FaXTwitter size='30px' />
         </div>
         <div className='flex flex-col'>
-          <h1 className='font-extrabold text-xl md:text-7xl mt-3 mb-2 md:my-8'>Happening now</h1>
-          <h2 className='font-bold text-lg md:text-4xl my-2 md:my-4'>Join today.</h2>
+          <h1 className='font-extrabold text-4xl md:text-7xl mt-3 mb-2 md:my-8'>Happening now</h1>
+          <h2 className='font-bold text-3xl md:text-4xl my-2 md:my-4'>Join today.</h2>
           <form onSubmit={handleSubmit} className='flex flex-col  md:w-[50%]'>
             {!hasAccount && (<>
 
