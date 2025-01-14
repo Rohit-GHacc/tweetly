@@ -46,7 +46,7 @@ function RightSideBar() {
                 round={true}
               />
               <div className='px-2'>
-                <div className='font-bold hover:underline'>{user.name}</div>
+                <div className='font-bold hover:underline text-sm'>{user.name.split(" ")[0]}</div>
                 <div className='text-gray-400 text-sm'>@{user.username}</div>
               </div>
             </Link>

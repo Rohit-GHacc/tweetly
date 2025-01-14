@@ -16,7 +16,7 @@ function Profile() {
     
     
   return (
-    <div className='w-[47%] border-gray-200 border border-t-0  '>
+    <div className='md:col-span-2 border-gray-200 border border-t-0  '>
       <div className='flex items-center border-b border-gray-200 cursor-pointer sticky top-0 background-white backdrop-blur'>
         <Link to='/' className='rounded-full p-2 hover:bg-gray-200 ml-2'>
             <IoMdArrowBack size='20px'/>
