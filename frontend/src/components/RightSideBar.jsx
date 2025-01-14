@@ -21,7 +21,7 @@ function RightSideBar() {
   };
 
   return (
-    <div className='sticky top-0 py-1 h-[100vh] w-[31%] hidden lg:block'>
+    <div className='sticky top-0 py-1 h-[100vh] hidden lg:block'>
       <div className='rounded-full flex px-4 items-center bg-gray-100 '>
         <CiSearch size='24px' />
         <input

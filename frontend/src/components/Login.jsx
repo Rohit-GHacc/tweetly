@@ -8,6 +8,7 @@ import { useDispatch } from 'react-redux'
 import { getUser } from '../redux/userSlice'
 function Login() {
   const [hasAccount, setHasAccount] = useState(true);
+  const [loading, setLoading] = useState(false)
   const [user, setUser] = useState({
     name: '', username: '', email: '', password: ''
   })
@@ -35,7 +36,7 @@ function Login() {
 
   const handleSubmit = async (e) => {
     e.preventDefault();
-
+    setLoading(true)
 
     console.log("value of hasAccount:", hasAccount);
     if (hasAccount) {
@@ -58,8 +59,10 @@ function Login() {
         }
       } catch (error) {
 
-        toast.success(error.response.data.message)
+        toast.error(error.response.data.message)
         console.log(error)
+      }finally{
+        setLoading(false)
       }
     }
     else {
@@ -105,22 +108,25 @@ function Login() {
   }
 
   return (
-    <div className='w-screen h-screen flex items-center justify-center'>
-      <div className="flex items-center justify-evenly w-[90%]">
-        <div className='w-[30%]'>
+    <div className='w-screen h-screen flex py-4  md:p-0 md:items-center md:justify-center'>
+      <div className="md:flex md:flex-row md:items-center md:justify-evenly px-6 md:p-0 md:w-[90%]">
+        <div className='hidden md:block md:w-[30%]'>
           <FaXTwitter size='400px' />
         </div>
+        <div className='block md:hidden my-3'>
+          <FaXTwitter size='30px' />
+        </div>
         <div className='flex flex-col'>
-          <h1 className='font-bold text-7xl my-8'>Happening now</h1>
-          <h2 className='font-bold text-4xl my-4'>Join today.</h2>
-          <form onSubmit={handleSubmit} className='flex flex-col  w-[50%]'>
+          <h1 className='font-extrabold text-xl md:text-7xl mt-3 mb-2 md:my-8'>Happening now</h1>
+          <h2 className='font-bold text-lg md:text-4xl my-2 md:my-4'>Join today.</h2>
+          <form onSubmit={handleSubmit} className='flex flex-col  md:w-[50%]'>
             {!hasAccount && (<>
 
-              <input type="text" name='name' value={capitalizeWords(user.name)} onChange={handleInputChange} placeholder="Enter name" className='outline-blue-500 border border-gray-300 rounded-full px-3 py-1 my-1' />
-              <input type="text" name='username' value={user.username} onChange={handleInputChange} placeholder="Enter username" className='outline-blue-500 border border-gray-300 rounded-full px-3 py-1 my-1' /> </>)
+              <input type="text" name='name' value={capitalizeWords(user.name)} onChange={handleInputChange} placeholder="Enter name" className='outline-blue-500 border border-gray-300 rounded-full px-3 py-1 my-1 text-sm md:text-base' />
+              <input type="text" name='username' value={user.username} onChange={handleInputChange} placeholder="Enter username" className='outline-blue-500 border border-gray-300 rounded-full px-3 py-1 my-1 text-sm md:text-base' /> </>)
             }
-            <input type="email" name='email' value={user.email} onChange={handleInputChange} placeholder="Enter email" className='outline-blue-500 border border-gray-300 rounded-full px-3 py-1 my-1' />
-            <input type="password" name='password' value={user.password} onChange={handleInputChange} placeholder="Enter password" className='outline-blue-500 border border-gray-300 rounded-full px-3 py-1 my-1' />
+            <input type="email" name='email' value={user.email} onChange={handleInputChange} placeholder="Enter email" className='outline-blue-500 border border-gray-300 rounded-full px-3 py-1 my-1 text-sm md:text-base' />
+            <input type="password" name='password' value={user.password} onChange={handleInputChange} placeholder="Enter password" className='outline-blue-500 border border-gray-300 rounded-full px-3 py-1 my-1 text-sm md:text-base' />
             {/* {!hasAccount && (
               <input
                 type="file"
@@ -130,9 +136,9 @@ function Login() {
                 className='outline-blue-500 border border-gray-300 rounded-full px-3 py-1 my-1'
               />
             )} */}
-            <button type='submit' className='bg-blue-500 text-white font-bold px-4 py-1 my-2 rounded-full text-center '>{hasAccount ? "Login" : "Create account"}</button>
+            <button type='submit' className='bg-blue-500 text-white font-bold px-4 py-1 my-2 rounded-full text-center text-sm md:text-base'>{hasAccount ? "Login" : "Create account"}</button>
             <div className='p-1'>{hasAccount ? "Do not have an account?" : "Already have an account? "}</div>
-            <button onClick={loginSignupHandler} className='text-blue-500 border border-gray-300 font-bold px-4 py-1 my-2 rounded-full text-center '>{hasAccount ? "Sign Up" : "Login"}</button>
+            <button onClick={loginSignupHandler} className='text-blue-500 border border-gray-300 font-bold px-4 py-1 my-2 rounded-full text-center text-sm md:text-base'>{hasAccount ? "Sign Up" : "Login"}</button>
 
           </form>
         </div>

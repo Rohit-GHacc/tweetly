@@ -21,7 +21,7 @@ function Home() {
     useOtherUsers(user?._id)
     return (
         <div>
-            <div className='flex mx-auto w-[80%] justify-center gap-[2%]'>
+            <div className='grid grid-cols-1 md:grid-cols-4 mx-0 md:mx-auto md:w-[80%] md:justify-center md:gap-[2%]'>
                 <LeftSideBar />
                 <Outlet/>
                 <RightSideBar />

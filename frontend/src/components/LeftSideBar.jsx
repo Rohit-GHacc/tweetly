@@ -28,7 +28,7 @@ function LeftSideBar() {
     navigate('/login')
   }
   return (
-    <div className='sticky top-0 h-[100vh] w-[18%]'>
+    <div className='sticky top-0 h-[100vh] hidden'>
         <div className='hover:bg-gray-200 p-2  rounded-full inline-block '>
             <FaXTwitter  size = '30px'/>
         </div>
