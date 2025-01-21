@@ -108,7 +108,7 @@ function Login() {
   }
 
   return (
-    <div className='w-screen h-screen flex py-4  md:p-0 md:items-center md:justify-center'>
+    <div className='w-screen h-screen flex py-4  md:p-0 items-center justify-center'>
       <div className="md:flex md:flex-row md:items-center md:justify-evenly px-6 md:p-0 md:w-[90%]">
         <div className='hidden md:block md:w-[30%]'>
           <FaXTwitter size='400px' />
@@ -121,7 +121,6 @@ function Login() {
           <h2 className='font-bold text-3xl md:text-4xl my-2 md:my-4'>Join today.</h2>
           <form onSubmit={handleSubmit} className='flex flex-col  md:w-[50%]'>
             {!hasAccount && (<>
-
               <input type="text" name='name' value={capitalizeWords(user.name)} onChange={handleInputChange} placeholder="Enter name" className='outline-blue-500 border border-gray-300 rounded-full px-3 py-1 my-1 text-sm md:text-base' />
               <input type="text" name='username' value={user.username} onChange={handleInputChange} placeholder="Enter username" className='outline-blue-500 border border-gray-300 rounded-full px-3 py-1 my-1 text-sm md:text-base' /> </>)
             }
