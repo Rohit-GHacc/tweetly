@@ -2,9 +2,9 @@ import React, { useState } from 'react'
 import Avatar from 'react-avatar'
 import { CiImageOn } from "react-icons/ci"
 import { MdOutlineGifBox } from "react-icons/md"
-import { LiaPollSolid } from "react-icons/lia"
+// import { LiaPollSolid } from "react-icons/lia"
 import { MdOutlineEmojiEmotions } from "react-icons/md"
-import { RiCalendarScheduleLine } from "react-icons/ri"
+// import { RiCalendarScheduleLine } from "react-icons/ri"
 import { useSelector, useDispatch } from 'react-redux'
 import axios from 'axios'
 import { toggleRefresh, setFilter } from '../redux/tweetSlice'
@@ -124,7 +124,6 @@ function CreatePost() {
                     <div className="flex gap-1 ml-12">
                         <ActionIcon Icon={CiImageOn} />
                         <ActionIcon Icon={MdOutlineGifBox} />
-                        <ActionIcon Icon={LiaPollSolid} />
                         <div className="relative">
                             <div onClick={() => setShowEmojis(prev => !prev)}>
                                 <ActionIcon Icon={MdOutlineEmojiEmotions} />
@@ -149,7 +148,6 @@ function CreatePost() {
                                 </div>
                             )}
                         </div>
-                        <ActionIcon Icon={RiCalendarScheduleLine} />
                     </div>
                     <button 
                         onClick={postTweet}
