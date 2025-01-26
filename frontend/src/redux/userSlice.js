@@ -1,7 +1,7 @@
 import { createSlice } from '@reduxjs/toolkit'
 
 const userSlice = createSlice({
-    name: "user",
+    name: "user", 
     initialState: {
         user: null,
         otherUsers: null,
@@ -30,6 +30,18 @@ const userSlice = createSlice({
                 //follow
                 state.user.following.push(action.payload);
             }
+        },
+        updateUser: (state, action) => {
+            state.user = {
+                ...state.user,
+                ...action.payload
+            }
+            if(state.profile && state.profile._id === state.user._id) {
+                state.profile = {
+                    ...state.profile,
+                    ...action.payload
+                }
+            }
         }
         // tried following methods for updating follow/unfollow but didn't work
         // setFollow: (state,action)=>{
@@ -41,5 +53,5 @@ const userSlice = createSlice({
     }
 })
 
-export const {getOtherUsers,getUser,getMyProfile,followingUpdate} = userSlice.actions
+export const {getOtherUsers, getUser, getMyProfile, followingUpdate, updateUser} = userSlice.actions
 export default userSlice.reducer
